@@ -8,7 +8,7 @@ void merge(int *a, int start, int mid, int end)
     
     while(i <= mid && j <= end)
     {
-        if a[i] < a[j]
+        if (a[i] < a[j])
             temp[k++] = a[i++];
         else
             temp[k++] = a[j++];
@@ -19,8 +19,8 @@ void merge(int *a, int start, int mid, int end)
     while(j <= end)
         temp[k++] = a[j++];
     
-    for(k=start;k <= end ;k++)
-        a[k] = temp[k];
+    for(i=start,j=0;i <= end && j<k;j++,i++)
+        a[i] = temp[j];
 }
 
 void merge_sort_recursion(int *a, int start, int end)
