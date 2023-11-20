@@ -1,0 +1,22 @@
+int findKthFromEnd(struct ListNode* head, int k) {
+    // Initialize two pointers
+    struct ListNode* pointer1 = head;
+    struct ListNode* pointer2 = head;
+
+    // Move pointer2 k nodes ahead
+    for (int i = 0; i < k; ++i) {
+        if (pointer2 == NULL) {
+            return -1; // The list is shorter than k nodes
+        }
+        pointer2 = pointer2->next;
+    }
+
+    // Move both pointers until pointer2 reaches the end
+    while (pointer2 != NULL) {
+        pointer1 = pointer1->next;
+        pointer2 = pointer2->next;
+    }
+
+    // At this point, pointer1 is k nodes from the end
+    return pointer1->value;
+}
