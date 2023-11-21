@@ -31,6 +31,38 @@ void combination(int a[], int temp[], int start , int end ,int index ,int r)
     
 }
 
+void printNCombSum(int *a, int n, int sum)
+{
+    int temp[n];
+    printf("\n Combination of Sum %d :", sum);
+    NCombSum(a,temp,0,n-1,0,0,sum);   
+}
+
+void NCombSum(int *a, int *temp, int start, int end, int index, int curSum, int sum)
+{
+    int i=0;
+    if(curSum == sum)
+    {
+        for(i=0;i<index;i++)
+            printf("%d",temp[i]);
+     printf(" ");
+     return;
+    }
+    else if(curSum > sum)
+        return;
+    else if(start > end)
+        return;
+       
+    for(i=start; i<=end ;i++)
+    {
+        temp[index] = a[i];
+        curSum+=temp[index];
+        NCombSum(a,temp, i, end, index+1, curSum, sum);
+        //NCombSum(a,temp, i+1, end, index+1, curSum, sum);
+        curSum-=temp[index];
+    }
+
+}
 
 int main() {
     // Write C code here
